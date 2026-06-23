@@ -1,0 +1,81 @@
+================================================================================
+                           SOLSTICE PROTOCOL - GAME RULES
+================================================================================
+
+1. NARRATIVE BACKSTORY
+--------------------------------------------------------------------------------
+The June Solstice is ending forever. The Sun is sinking below the horizon, and
+without intervention, the world will fade into absolute darkness. You control a 
+repair drone inside the ancient "Helios Solar Facility". Guided by the mainframe
+AI (the Gemini Oracle), you must stabilize the corrupted solar reactor nodes 
+before sunset.
+wsd
+
+2. MAIN OBJECTIVE
+--------------------------------------------------------------------------------
+* PRESERVE DAYLIGHT: A global "Daylight Protocol" progress bar in your left HUD 
+  sidebar drains continuously. You must restore it before it hits 0%.
+* REPAIR SOLAR COUPLERS: Explore Sectors 1 through 4. Each sector contains 
+  4 corrupted solar nodes (glowing orange rings). Touch them to initiate a
+  repair puzzle.
+* SYSTEM ADVANCEMENT: Solving a puzzle restores your daylight level (+25%). 
+  Once all 4 nodes in a sector are repaired, the red emergency exit shield 
+  deactivates (turns green). Fly into the portal to advance to the next sector.
+* REBOOT THE REACTOR: Sector 5 houses the Solar Core. You must balance the 4 
+  core terminals surrounding the reactor while daylight drains at an accelerated
+  rate.
+
+
+3. KEYBOARD & MOUSE CONTROLS
+--------------------------------------------------------------------------------
+* DRONE MOVEMENT: Use [W], [A], [S], [D] or the [Arrow Keys] to fly the drone.
+* PUZZLE INTERACTION: Fly directly into a corrupted orange node. The drone will 
+  lock in place, and the puzzle interface modal will open.
+* SUBMITTING PUZZLES: Input your answer in the modal and click [CALIBRATE]. 
+  Clicking [ABORT] allows you to cancel the puzzle and return to exploration.
+* GEMINI ORACLE (AI PANEL): Click the [GEMINI ORACLE] button in your sidebar
+  to slide open the console. You can type questions, lore queries, or request
+  hints (e.g. "give me a hint for this puzzle") in the command input field.
+* PAUSE MENU: Click [PAUSE] to freeze the game and access restart/menu commands.
+* AUDIO TOGGLE: Click [MUTE SOUND] to turn off synthesizer sound effects.
+
+
+4. THE 4 PUZZLE TYPES
+--------------------------------------------------------------------------------
+* TYPE A: SOLAR ALIGNMENT SEQUENCE (Logic)
+  Look at the sequence of integers displayed. Figure out the pattern and type
+  the next logical number in the sequence. 
+  - (Example pattern types: Arithmetic, Geometric, Fibonacci, Squares)
+
+* TYPE B: BINARY SOLAR COUPLER (Binary Accumulator)
+  A target decimal (base-10) integer is shown. Click on the bit switches (0/1) 
+  to activate their weights (e.g. 1, 2, 4, 8, 16, 32). Toggle them so their sum 
+  matches the target value exactly.
+
+* TYPE C: SOLAR KERNEL DEBUGGER (Debugging)
+  A block of JavaScript-style code contains a critical bug (like an infinite 
+  loop or array out of bounds). Click the dropdown selector inside the code block
+  and choose the correct option that resolves the bug.
+
+* TYPE D: TURING ENIGMA DECRYPTOR (Cipher)
+  An encrypted uppercase word is shown. Underneath it, you are given the cipher
+  deviation (e.g., "-3"). Shift each letter of the encrypted word backward by 
+  that count in the alphabet to decrypt the message, then type it in.
+  - (Example: KHOIRV with shift -3 decrypts to HELIOS)
+
+
+5. WINNING AND LOSING CONDITIONS
+--------------------------------------------------------------------------------
+* DEFEAT (GAME OVER): 
+  If the daylight bar drains to 0%, the sky fades to pitch black, the screens 
+  glitch offline, and warning sirens sound. The facility enters total shutdown.
+  - Action: You must click [REBOOT MAIN SYSTEM] to restart from Sector 1.
+
+* VICTORY:
+  When you repair the 4th terminal surrounding the Solar Core in Sector 5:
+  1. The mainframe stabilizing sequence triggers immediately.
+  2. The daylight bar rapidly fills back up to 100%.
+  3. The facility tiles flash and light up with bright, warm golden hues.
+  4. The Oracle broadcasts a success log confirming daylight has been saved.
+  5. The victory screen displays, letting you restart the game cycle.
+================================================================================

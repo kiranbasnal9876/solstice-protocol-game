@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Solstice Protocol // Dev June Solstice Game Jam</title>
+    <!-- Google Fonts for High-Tech Sci-Fi look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Phaser 3 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Main App Container -->
+    <div id="app">
+        <!-- Phaser Canvas Container -->
+        <div id="game-container"></div>
+
+        <!-- High-Tech HUD Layer -->
+        <div id="hud" class="hud-hidden">
+            <!-- Left Info Panel -->
+            <div class="hud-panel left-panel">
+                <div class="system-status">SYS: ACTIVE</div>
+                <div class="level-indicator">SECTOR: <span id="current-sector">01</span></div>
+                <div class="node-counter">SOLAR NODES: <span id="nodes-repaired">0</span>/<span id="nodes-total">4</span></div>
+            </div>
+
+            <!-- Central Daylight Meter (The Solstice Theme Core) -->
+            <div class="hud-panel center-panel">
+                <div class="daylight-label">DAYLIGHT PROTOCOL</div>
+                <div class="daylight-bar-container">
+                    <div id="daylight-bar" style="width: 100%;"></div>
+                </div>
+                <div class="daylight-percentage"><span id="daylight-pct">100</span>% REMAINING</div>
+                <div id="alert-ticker" class="alert-normal">ALL SOLAR COLLECTORS OPERATIONAL</div>
+            </div>
+
+            <!-- Right Controls Panel -->
+            <div class="hud-panel right-panel">
+                <button id="toggle-audio-btn" class="hud-btn">MUTE SOUND</button>
+                <button id="oracle-btn" class="hud-btn glow-btn">GEMINI ORACLE</button>
+                <button id="pause-btn" class="hud-btn">PAUSE</button>
+            </div>
+        </div>
+
+        <!-- Gemini Oracle Sidebar (Google AI component) -->
+        <div id="oracle-panel" class="oracle-closed">
+            <div class="oracle-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="oracle-title">GEMINI ORACLE v1.0.4</div>
+                    <button id="set-api-key-btn" title="Set Gemini API Key" style="background: none; border: none; color: var(--neon-cyan); cursor: pointer; font-size: 14px; padding: 2px; text-shadow: var(--crt-glow);">🔑</button>
+                </div>
+                <button id="close-oracle-btn" class="oracle-close-x">&times;</button>
+            </div>
+            <!-- Terminal Vibe Area -->
+            <div class="oracle-terminal">
+                <div class="crt-overlay"></div>
+                <div id="oracle-log" class="oracle-log-content">
+                    <div class="log-entry system-msg">Initializing connection to ancient solar database...</div>
+                    <div class="log-entry oracle-msg">Greetings, Operator. I am the Gemini Oracle, your computational guide. Helios Solar Facility is losing thermal containment. The June Solstice is ending forever. Ask me anything, or type 'HINT' or 'LORE' for assistance.</div>
+                </div>
+            </div>
+            <!-- Input Area -->
+            <form id="oracle-form" class="oracle-input-area">
+                <span class="prompt-arrow">&gt;</span>
+                <input type="text" id="oracle-input" placeholder="Query Oracle (e.g., 'hint', 'turing', 'solstice')..." autocomplete="off">
+                <button type="submit" id="oracle-submit-btn">SEND</button>
+            </form>
+        </div>
+
+        <!-- Puzzle Terminal Modal (Interactive Overlay) -->
+        <div id="puzzle-modal" class="modal-hidden">
+            <div class="modal-content glassmorphism">
+                <div class="crt-overlay"></div>
+                <div class="modal-header">
+                    <div class="modal-title" id="puzzle-title">NODE REPAIR INTERFACE</div>
+                    <div class="modal-sector" id="puzzle-sector">NODE: #01</div>
+                </div>
+                
+                <div class="modal-body">
+                    <!-- Dynamic Puzzle Description -->
+                    <div class="puzzle-description" id="puzzle-desc">
+                        Select nodes to form a complete solar connection sequence.
+                    </div>
+                    
+                    <!-- Dynamic Puzzle Interactive Area -->
+                    <div id="puzzle-workspace" class="puzzle-workspace">
+                        <!-- Loaded dynamically via js/puzzles.js -->
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="puzzle-oracle-hint-btn" class="modal-btn secondary-btn">ASK ORACLE FOR HINT</button>
+                    <button id="puzzle-submit-btn" class="modal-btn primary-btn">CONFIRM PROTOCOL</button>
+                    <button id="puzzle-bypass-btn" class="modal-btn bypass-btn">ABORT REPAIR</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pause Overlay -->
+        <div id="pause-modal" class="overlay-hidden">
+            <div class="overlay-card glassmorphism text-center">
+                <h2>SYSTEM PAUSED</h2>
+                <p>Solar alignment halted. Daylight decay frozen temporarily.</p>
+                <div class="button-group">
+                    <button id="resume-btn" class="menu-btn">RESUME PROTOCOL</button>
+                    <button id="restart-btn" class="menu-btn reset-btn">REBOOT FACILITY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/audio.js"></script>
+    <script src="js/oracle.js"></script>
+    <script src="js/puzzles.js"></script>
+    <script src="js/scenes/UIHelper.js"></script>
+    <script src="js/scenes/BootScene.js"></script>
+    <script src="js/scenes/MenuScene.js"></script>
+    <script src="js/scenes/StoryScene.js"></script>
+    <script src="js/scenes/MainScene.js"></script>
+    <script src="js/scenes/CoreScene.js"></script>
+    <script src="js/scenes/EndScene.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
